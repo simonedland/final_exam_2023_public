@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Landing Page</title>
+	<style>
+		body {
+			background-color: #F7F7F7;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.5s ease;
+        }
+
+        .circle:nth-child(1) {
+            background-color: #a9a9a9;
+        }
+    
+        .circle:nth-child(2) {
+            background-color: #027DFF;
+            transform: translateY(0px) scale(0);
+        }
+    
+        .circle:nth-child(3) {
+            background-color: #5C4EE5;
+            transform: translate(0px, 0px) scale(0);
+        }
+    
+        .circle:nth-child(4) {
+            background-color: #bd4c85;
+            transform: translate(0px, 0px) scale(0);
+        }
+    
+        .container:hover .circle:nth-child(1) {
+            background-color: #787878;
+        }
+    
+        .container:hover .circle:nth-child(2) {
+            transform: translateY(-110px) scale(1);
+        }
+    
+        .container:hover .circle:nth-child(3) {
+            transform: translate(-110px, -60px) scale(1);
+        }
+    
+        .container:hover .circle:nth-child(4) {
+            transform: translate(110px, -60px) scale(1);
+        }
+    
+        .container:hover .circle {
+            transition: all 0.9s cubic-bezier(0.68, -0.2, 0.27, 1.0);
+        }
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 50px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 4rem;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 20px;
+            text-align: center;
+		}
+
+		p {
+			font-size: 1.5rem;
+			color: #555;
+			margin-bottom: 50px;
+            text-align: center;
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: #333;
+			color: #fff;
+			border-radius: 5px;
+			font-size: 1.2rem;
+			text-decoration: none;
+			transition: all 0.3s ease-in-out;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+		}
+
+		.btn:hover {
+			transform: scale(1.1);
+			box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+		}
+
+		.hero-image {
+			background-image: url('https://example.com/hero-image.jpg');
+			background-size: cover;
+			background-position: center center;
+			height: 100vh;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.hero-content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: #fff;
+			z-index: 1;
+		}
+
+		.hero-content h1 {
+			font-size: 6rem;
+			font-weight: bold;
+			margin-bottom: 20px;
+			text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+		}
+
+		.hero-content p {
+			font-size: 2rem;
+			margin-bottom: 50px;
+			text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+		}
+
+		.fade-in {
+			animation-name: fadeIn;
+			animation-duration: 2s;
+			animation-fill-mode: both;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<section class="hero-image fade-in">
+		<div class="hero-content">
+			<h1>Welcome to My Landing Zone</h1>
+			<p>to be so little i spent alot of time on it</p>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="container">
+                <a class="circle">Links</a>
+                <a href="/bicep/" class="circle">Bicep</a>
+                <a href="/terraform/" class="circle">Terraform</a>
+                <a href="/pulumi/" class="circle">Pulumi</a>
+            </div>
+
+		</div>
+	</section>
+    
+</body>
+</html>

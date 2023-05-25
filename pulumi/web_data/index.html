@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pulumi</title>
+        <link rel="icon" href="pulumi-logo.svg" type="image/x-icon">
+        <style>
+            /* Pulumi color palette */
+            :root {
+                --pulumi-yellow: #f7bf2a;
+                --pulumi-red: #f26e7e;
+                --pulumi-dark-pink: #bd4c85;
+                --pulumi-purple: #8a3391;
+                --pulumi-blue-purple: #805ac3;
+                --pulumi-blue: #4d5bd9;
+            }
+            #back-button {
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                background-color: var(--pulumi-purple);
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                cursor: pointer;
+                text-align: center;
+                line-height: 1;
+                z-index: 1000;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+                color: white;
+                padding: 0;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: var(--pulumi-blue);
+            }
+
+            header {
+                background-color: var(--pulumi-blue-purple);
+                padding: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            h1 {
+                color: white;
+                font-size: 2rem;
+                margin: 0;
+            }
+
+            main {
+                background-color: var(--pulumi-purple);
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            section {
+                background-color: white;
+                border-radius: 5px;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+                margin: 1rem;
+                padding: 2rem;
+                width: 80%;
+                max-width: 800px;
+                max-height: 80%;
+                opacity: 1;
+                transition: opacity 1s;
+            }
+
+            .hidden {
+                opacity: 0;
+            }
+
+            h2 {
+                color: var(--pulumi-dark-pink);
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            li {
+                padding: 0.5rem 0;
+            }
+
+            a {
+                color: var(--pulumi-blue);
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            /* Logo */
+            .logo {
+                height: 50px;
+                margin-right: 1rem;
+            }
+
+            /* Images */
+            .img {
+                display: block;
+                width: 70%;
+            }
+
+            .center {
+                margin: 0 auto;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+
+            /* Animations */
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <button id="back-button" onclick="goBack()"><span style="position: relative; top: -2px;">&#8592;</span></button>
+        <header>
+            <img src="pulumi-logo.svg" alt="Pulumi Logo" class="logo">
+            <h1>Pulumi</h1>
+        </header>
+        <main>
+        
+            <section class="intro">
+                <p>Welcome to the Pulumi programming language website!</p>
+            </section>
+
+            <section class="features center">
+                <h2>Key Features</h2>
+                <ul>
+                    <li class="center">Infrastructure as code</li>
+                    <!--img src="Screenshot.png" alt="test image" class="img center"-->
+                    <li class="center">Support for multiple languages</li>
+                    <li class="center">Supports multiple providers</li>
+                    <li class="center">Modular and reusable code</li>
+                </ul>
+            </section>
+
+            <section class="getting-started">
+                <h2>Getting Started</h2>
+                <p>Follow these steps to get started with Pulumi:</p>
+                <ol>
+                    <li>Download and install Pulumi</li>
+                    <li>Configure your provider</li>
+                    <li>Write your Pulumi configuration files</li>
+                    <li>Initialize your Pulumi project</li>
+                    <li>Deploy your Pulumi infrastructure</li>
+                </ol>
+            </section>
+
+            <section class="providers">
+                <h2>Popular Providers</h2>
+                <ul>
+                    <li>AWS</li>
+                    <li>Google Cloud Platform</li>
+                    <li>Azure</li>
+                    <li>DigitalOcean</li>
+                    <li>VMware</li>
+                </ul>
+            </section>
+
+            <section class="resources">
+                <h2>Resources</h2>
+                <ul>
+                    <li><a href="https://github.com/pulumi/pulumi">Pulumi GitHub Repository</a></li>
+                    <li><a href="https://www.pulumi.com/docs/">Pulumi Documentation</a></li>
+                    <li><a href="https://www.pulumi.com/learn/">Pulumi Tutorials</a></li>
+                </ul>
+            </section>
+
+            <section class="community">
+                <h2>Community</h2>
+                <p>Join the Pulumi community and contribute to its development:</p>
+                <ul>
+                    <li><a href="https://slack.pulumi.com/">Pulumi Community Slack</a></li>
+                    <li><a href="https://github.com/pulumi/pulumi/issues">Report Issues and Request Features</a></li>
+                    <li><a href="https://github.com/pulumi/pulumi/blob/master/CONTRIBUTING.md">Contribute to the Pulumi Project</a></li>
+                </ul>
+            </section>
+        </main>
+    </body>
+    <script>
+        // Function to check if an element is visible in the viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function revealSections() {
+            const sections = document.querySelectorAll('section');
+            for (const section of sections) {
+                if (isElementInViewport(section)) {
+                    section.classList.remove('hidden');
+                }
+            }
+        }
+
+        // Initially hide all sections
+        document.querySelectorAll('section').forEach((section) => section.classList.add('hidden'));
+
+        // Reveal sections when they become visible
+        window.addEventListener('scroll', revealSections);
+        window.addEventListener('resize', revealSections);
+        window.addEventListener('load', revealSections);
+
+        // Get button colors from CSS variables
+        const rootStyles = getComputedStyle(document.documentElement);
+        const buttonColor = rootStyles.getPropertyValue('--pulumi-purple').trim();
+        const buttonHoverColor = rootStyles.getPropertyValue('--pulumi-red').trim();
+
+        // Back button
+        function goBack() {
+            window.history.back();
+        }
+
+        document.getElementById('back-button').addEventListener('mouseover', function() {
+            this.style.backgroundColor = buttonHoverColor;
+        });
+
+        document.getElementById('back-button').addEventListener('mouseout', function() {
+            this.style.backgroundColor = buttonColor;
+        });
+
+    </script>
+</html>

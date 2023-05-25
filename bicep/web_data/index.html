@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BICEP</title>
+        <link rel="icon" href="bicep-logo.svg" type="image/x-icon">
+        <style>
+            /* Azure blue color palette */
+            :root {
+                --azure-blue: #0078d4;
+                --azure-light-blue: #00bcf2;
+                --azure-dark-blue: #005a9e;
+                --azure-lightest-blue: #e7f1fd;
+                --azure-darkest-blue: #003a69;
+            }
+            
+            #back-button {
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                background-color: var(--azure-light-blue);
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                cursor: pointer;
+                text-align: center;
+                line-height: 1;
+                z-index: 1000;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+                color: white;
+                padding: 0;
+            }
+            
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: var(--azure-lightest-blue);
+            }
+        
+            header {
+                background-color: var(--azure-blue);
+                padding: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        
+            h1 {
+                color: white;
+                font-size: 2rem;
+                margin: 0;
+            }
+        
+            main {
+                background-color: var(--azure-light-blue);
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        
+            section {
+                background-color: white;
+                border-radius: 5px;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+                margin: 1rem;
+                padding: 2rem;
+                width: 80%;
+                max-width: 800px;
+                opacity: 1;
+                transition: opacity 1s;
+            }
+        
+            .hidden {
+                opacity: 0;
+            }
+        
+            h2 {
+                color: var(--azure-dark-blue);
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+        
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+        
+            li {
+                padding: 0.5rem 0;
+            }
+        
+            a {
+                color: var(--azure-blue);
+                text-decoration: none;
+            }
+        
+            a:hover {
+                text-decoration: underline;
+            }
+        
+            footer {
+                background-color: var(--azure-darkest-blue);
+                color: white;
+                padding: 1rem;
+                text-align: center;
+                margin-top: 1rem;
+            }
+        
+            /* Logo */
+            .logo {
+                height: 50px;
+                margin-right: 1rem;
+            }
+        
+            /* Animations */
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <button id="back-button" onclick="goBack()"><span style="position: relative; top: -2px;">&#8592;</span></button>
+        <header>
+            <img class="logo" src="bicep-logo.svg" alt="Bicep Logo">
+            <h1>Bicep</h1>
+        </header>
+        <main>
+        
+            <section id="intro">
+                <h2>Introduction</h2>
+                <p>
+                    Azure Bicep is a domain-specific language (DSL) for creating, deploying, and managing Azure resources using Infrastructure as Code (IaC). Bicep offers a more concise and expressive syntax than ARM templates while maintaining compatibility with the ARM JSON format.
+                </p>
+            </section>
+            <section id="features">
+                <h2>Features</h2>
+                <ul>
+                    <li>Concise and expressive syntax</li>
+                    <li>Type safety and IntelliSense</li>
+                    <li>Native Azure integration</li>
+                    <li>Modular and reusable code</li>
+                </ul>
+            </section>
+        
+            <section id="getting-started">
+                <h2>Getting Started</h2>
+                <p>
+                    To get started with Azure Bicep, follow the steps below:
+                </p>
+                <ol>
+                    <li>Install the Bicep CLI</li>
+                    <li>Configure your Azure subscription</li>
+                    <li>Create your first Bicep file</li>
+                    <li>Deploy your resources using the Bicep CLI</li>
+                </ol>
+                <p>
+                    Learn more about Azure Bicep in the <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview" target="_blank">official documentation</a>.
+                </p>
+            </section>
+        
+            <section id="resources">
+                <h2>Resources</h2>
+                <ul>
+                    <li><a href="https://github.com/Azure/bicep" target="_blank">Azure Bicep GitHub repository</a></li>
+                    <li><a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview" target="_blank">Official documentation</a></li>
+                    <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep" target="_blank">Bicep Visual Studio Code extension</a></li>
+                    <li><a href="https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP0gE_GgQ8GXoEg_0A1" target="_blank">Azure Bicep video series</a></li>
+                </ul>
+            </section>
+        
+        </main>
+    </body>
+    <script>
+        // Function to check if an element is visible in the viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+    
+        function revealSections() {
+            const sections = document.querySelectorAll('section');
+            for (const section of sections) {
+                if (isElementInViewport(section)) {
+                    section.classList.remove('hidden');
+                }
+            }
+        }
+    
+        // Initially hide all sections
+        document.querySelectorAll('section').forEach((section) => section.classList.add('hidden'));
+    
+        // Reveal sections when they become visible
+        window.addEventListener('scroll', revealSections);
+        window.addEventListener('resize', revealSections);
+        window.addEventListener('load', revealSections);
+        
+        // Get button colors from CSS variables
+        const rootStyles = getComputedStyle(document.documentElement);
+        const buttonColor = rootStyles.getPropertyValue('--azure-light-blue').trim();
+        const buttonHoverColor = rootStyles.getPropertyValue('--azure-lightest-blue').trim();
+
+        // Back button
+        function goBack() {
+            window.history.back();
+        }
+
+        document.getElementById('back-button').addEventListener('mouseover', function() {
+            this.style.backgroundColor = buttonHoverColor;
+        });
+
+        document.getElementById('back-button').addEventListener('mouseout', function() {
+            this.style.backgroundColor = buttonColor;
+        });
+    </script>
+</html>
